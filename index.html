@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <script>
         tailwind.config = {
             theme: {
@@ -19,37 +20,61 @@
             }
         }
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+        {
+          "imports": {
+            "@material/web/": "https://esm.run/@material/web/"
+          }
+        }
+      </script>
+    <script type="module">
+        import '@material/web/all.js';
+        import { styles as typescaleStyles } from '@material/web/typography/md-typescale-styles.js';
+
+        document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
 </head>
 
 <body>
     <main class="bg-[#F5F5F5]">
-        <header class="bg-white">
-            <nav class="container mx-auto flex justify-between items-center py-4 px-4" aria-label="Main Navigation">
-                <a href="/" class="flex flex-row items-center gap-2" aria-label="Pawfect Care Home">
-                    <div class="h-28 w-28 rounded-full p-4 flex justify-center items-center" aria-hidden="true">
+        <header class="bg-[#FEF7FF] border-b-[1px] border-gray-500">
+            <nav class="container mx-auto flex justify-between items-center px-4" aria-label="Main Navigation">
+                <a href="/" class="flex flex-row items-center gap-2" aria-label="navigation home">
+                    <div class="h-12 w-12 rounded-full flex justify-center items-center py-2" aria-hidden="true">
                         <img src="./assets/perro.png" alt="Pawfect Care Logo" />
                     </div>
-                    <span class="text-xl font-bold">Pawfect Care</span>
+                    <md-text-button class="text-xl font-bold">Pawfect Care</md-text-button>
                 </a>
-                <ul class="hidden sm:flex flex-row gap-8 text-xl font-bold" role="menubar">
-                    <li role="none">
-                        <a href="#home" role="menuitem">Home</a>
-                    </li>
-                    <li role="none">
-                        <a href="#about" role="menuitem">Why Choose Us?</a>
-                    </li>
-                    <li role="none">
-                        <a href="#contact" role="menuitem">Contact</a>
-                    </li>
-                    <li role="none">
-                        <a href="#service" role="menuitem">Service Features</a>
-                    </li>
-                </ul>
+          
+                <md-tabs class="hidden lg:block">
+                    <a href="#home" aria-label="navigation home">
+                        <md-primary-tab>
+                            Home
+                        </md-primary-tab>
+                    </a>
+                    <a href="#about" aria-label="navigation about">
+                        <md-primary-tab>
+                            Why Choose Us?
+                        </md-primary-tab>
+                    </a>
+                    <a href="#contact" aria-label="navigation contact"> <md-primary-tab>
+                            Contact
+                        </md-primary-tab> </a>
+                    <a href="#service" aria-label="navigation service features">
+                        <md-primary-tab>
+                            Service Features
+                        </md-primary-tab>
+                    </a>
+                </md-tabs>
                 <div class="flex flex-row gap-2">
-                    <button class="bg-orange-400 text-white p-3 rounded-3xl font-light text-xl"
-                        aria-label="Sign in to Pawfect Care">Sign in</button>
-                    <button class="rounded-3xl border-2 border-orange-400 text-orange-400 p-3 text-xl"
-                        aria-label="Sign up for Pawfect Care">Sign up</button>
+                    <a href="https://pawfect-care-app-web.web.app/">
+                        <md-outlined-button aria-label="Sign in to Pawfect Care">Sign in</md-outlined-button>
+                    </a>
+                    <a href="https://pawfect-care-app-web.web.app/">
+                        <md-filled-button aria-label="Sign up for Pawfect Care">Sign up</md-filled-button>
+                    </a>
+
                 </div>
             </nav>
         </header>
@@ -63,10 +88,15 @@
                     and keeps you in control. So you can focus on what matters most - providing quality pet care. Made
                     for vets, by vets.</p>
                 <div class="flex flex-row justify-center sm:justify-start gap-2">
-                    <a href="#subscriptions" class="bg-orange-400 text-white p-3 rounded-3xl font-light text-xl"
-                        aria-label="Get started with Pawfect Care">Get started</a>
-                    <a href="#contact" class="rounded-3xl border-2 border-orange-400 text-orange-400 p-3 text-xl"
-                        aria-label="Contact Pawfect Care">Contact now</a>
+                    <a href="#subscriptions">
+                        <md-outlined-button aria-label="Get started with Pawfect Care">Get started</md-outlined-button>
+                    </a>
+                    <a href="#contact">
+                        <md-filled-button aria-label="Contact Pawfect Care">Contact now</md-filled-button>
+                    </a>
+
+
+
                 </div>
             </div>
             <div class="col-span-6">
@@ -88,12 +118,13 @@
 
                 <div class="col-span-4 border-orange-400 border-4 rounded-xl p-8 flex flex-col justify-center items-center gap-8"
                     role="region" aria-labelledby="speed-service-title">
-                    <div class="h-24 w-24 rounded-full p-4 bg-orange-500 flex justify-center items-center"
-                        aria-hidden="true">
-                        <img src="./assets/speed.png" alt="Speed service logo" />
-                    </div>
-                    <h3 id="speed-service-title" class="text-2xl sm:text-3xl font-bold text-orange-400 text-center">Fast
-                        and Always Available</h3>
+                      <md-filled-icon-button  class="h-24 w-24">
+                        <img class="h-16 w-16" src="./assets/speed.png" alt="Speed service logo" />
+                      </md-filled-icon-button>
+               
+                    <md-filter-chip  label="Fast
+                    and Always Available"></md-filter-chip>
+             
                     <p class="font-light text-[16px] sm:text-xl text-center">No matter the time of day, our service
                         works tirelessly to support your clinic, offering seamless, round-the-clock booking assistance.
                     </p>
@@ -101,24 +132,21 @@
 
                 <div class="col-span-4 border-orange-400 border-4 rounded-xl p-8 flex flex-col justify-center items-center gap-8"
                     role="region" aria-labelledby="multiplatform-service-title">
-                    <div class="h-24 w-24 rounded-full p-4 bg-orange-500 flex justify-center items-center"
-                        aria-hidden="true">
-                        <img src="./assets/multiplatform.png" alt="Multiplatform service logo" />
-                    </div>
-                    <h3 id="multiplatform-service-title"
-                        class="text-2xl sm:text-3xl font-bold text-orange-400 text-center">Access from Any Device</h3>
+
+                    <md-filled-icon-button  class="h-24 w-24">
+                        <img class="h-16 w-16" src="./assets/multiplatform.png" alt="Multiplatform service logo" />
+                      </md-filled-icon-button>
+                        <md-filter-chip  label="Access from Any Device"></md-filter-chip>
                     <p class="font-light text-[16px] sm:text-xl text-center">Our platform adapts to any device—whether
                         mobile, tablet, or desktop—so pet owners can book appointments effortlessly from anywhere.</p>
                 </div>
 
                 <div class="col-span-4 border-orange-400 border-4 rounded-xl p-8 flex flex-col justify-center items-center gap-8"
                     role="region" aria-labelledby="appointments-service-title">
-                    <div class="h-24 w-24 rounded-full p-4 bg-orange-500 flex justify-center items-center"
-                        aria-hidden="true">
-                        <img src="./assets/calendary.png" alt="Appointments service logo" />
-                    </div>
-                    <h3 id="appointments-service-title"
-                        class="text-2xl sm:text-3xl font-bold text-orange-400 text-center">Hassle-Free Scheduling</h3>
+                    <md-filled-icon-button  class="h-24 w-24">
+                        <img class="h-16 w-16" src="./assets/calendary.png" alt="Appointments service logo" />
+                      </md-filled-icon-button>
+                    <md-filter-chip  label="Hassle-Free Schedulinge"></md-filter-chip>
                     <p class="font-light text-[16px] sm:text-xl text-center">Say goodbye to scheduling headaches.
                         Pawfect Care ensures smooth, automated booking so you can focus on what matters most—your
                         patients.</p>
@@ -138,16 +166,19 @@
             <div class="col-span-6 flex flex-col gap-8">
                 <h2 id="automate-service-heading" class="text-3xl lg:text-6xl text-center sm:text-start font-bold">
                     Always on, so you don't have to be</h2>
+                 
                 <p class="text-[16px] lg:text-xl">Every practice is different. That’s why Pawfect Care helps you reduce
                     phone calls and maintain control of your schedule through real-time online booking that is
                     customized to your practice, replicating your existing booking process.</p>
                 <div class="flex flex-row gap-2">
-                    <a href="#contact" class="bg-orange-400 text-white p-3 rounded-3xl font-light text-xl"
-                        aria-label="Contact Pawfect Care now">Contact now</a>
+                    <a href="#contact">
+                        <md-filled-button aria-label="Contact Pawfect Care">Contact now</md-filled-button>
+                    </a>
                 </div>
             </div>
-        </section>
-       <section id="subscriptions" class="container mx-auto flex flex-col gap-10 py-16"
+                  
+        </section>
+        <section id="subscriptions" class="container mx-auto flex flex-col gap-10 py-16"
             aria-labelledby="subscriptions-heading">
             <h2 id="subscriptions-heading" class="text-3xl sm:text-6xl text-center font-bold">Subscriptions</h2>
             <div
@@ -155,7 +186,7 @@
 
                 <div
                     class="col-span-4 border-orange-400 border-4 rounded-xl p-4 flex flex-col justify-center items-center gap-8 py-10">
-                    <h3 class="text-2xl sm:text-3xl font-bold text-orange-400 text-center">Starter Plan</h3>
+                    <md-filter-chip  label="Starter Plan"></md-filter-chip>
                     <ul class="font-light text-[16px] sm:text-xl flex flex-col items-start gap-3"
                         aria-label="Características del plan Starter por $0.00">
                         <li class="flex flex-row justify-center items-center gap-2">
@@ -179,13 +210,14 @@
                             Fast and free setup
                         </li>
                     </ul>
-                    <button
-                        class="rounded-3xl border-orange-400 bg-orange-400 text-white p-3 text-2xl font-bold">$00.00</button>
+                    <a href="#contact">
+                        <md-filled-button aria-label="Contact Pawfect Care">$00.00</md-filled-button>
+                    </a>
                 </div>
 
                 <div
                     class="col-span-4 border-orange-400 border-4 rounded-xl p-4 flex flex-col justify-center items-center gap-8 py-10">
-                    <h3 class="text-2xl sm:text-3xl font-bold text-orange-400 text-center">Growth Plan</h3>
+                    <md-filter-chip  label="Growth Plan"></md-filter-chip>
                     <ul class="font-light text-[16px] sm:text-xl flex flex-col items-start gap-3"
                         aria-label="Características del plan Growth por $150.00">
                         <li class="flex flex-row justify-center items-center gap-2">
@@ -209,13 +241,15 @@
                             Personalized onboarding
                         </li>
                     </ul>
-                    <button
-                        class="rounded-3xl border-orange-400 bg-orange-400 text-white p-3 text-2xl font-bold">$150.00</button>
+
+                        <a href="#contact">
+                            <md-filled-button aria-label="Contact Pawfect Care">$150.00</md-filled-button>
+                        </a>
                 </div>
 
                 <div
                     class="col-span-4 border-orange-400 border-4 rounded-xl p-4 flex flex-col justify-center items-center gap-8 py-10">
-                    <h3 class="text-2xl sm:text-3xl font-bold text-orange-400 text-center">Premium Plan</h3>
+                    <md-filter-chip  label="Premium Plan"></md-filter-chip>
                     <ul class="font-light text-[16px] sm:text-xl flex flex-col items-start gap-3"
                         aria-label="Características del plan Premium por $300.00">
                         <li class="flex flex-row justify-center items-center gap-2">
@@ -239,8 +273,9 @@
                             Expert setup and support
                         </li>
                     </ul>
-                    <button
-                        class="rounded-3xl border-orange-400 bg-orange-400 text-white p-3 text-2xl font-bold">$300.00</button>
+                        <a href="#contact">
+                            <md-filled-button aria-label="Contact Pawfect Care">$300.00</md-filled-button>
+                        </a>
                 </div>
 
                 <p class="col-span-12 text-center text-xl font-bold py-8">
@@ -263,9 +298,7 @@
                         <img src="./assets/user.png" alt="Profile image of a satisfied customer"
                             class="block lg:max-h-[300px] w-auto p-4 rounded-full" />
                     </div>
-                    <h3 id="review-1-heading"
-                        class="text-2xl sm:text-3xl font-light text-orange-400 text-center bg-orange-200 py-2 px-4 rounded-xl">
-                        Exceptional Service</h3>
+                        <md-filter-chip  label="Exceptional Service"></md-filter-chip>
                     <p class="font-light text-[16px] sm:text-xl text-center">
                         “Pawfect Care has revolutionized our clinic's scheduling. We now manage bookings with ease, and
                         our clients love the seamless experience.”
@@ -278,9 +311,7 @@
                         <img src="./assets/user.png" alt="Profile image of another satisfied customer"
                             class="block lg:max-h-[300px] w-auto p-4 rounded-full" />
                     </div>
-                    <h3 id="review-2-heading"
-                        class="text-2xl sm:text-3xl font-light text-orange-400 text-center bg-orange-200 py-2 px-4 rounded-xl">
-                        Effortless Management</h3>
+                        <md-filter-chip  label="Effortless Management"></md-filter-chip>
                     <p class="font-light text-[16px] sm:text-xl text-center">
                         “Managing appointments has never been easier. Pawfect Care takes care of everything, allowing us
                         to focus on delivering quality care.”
@@ -293,9 +324,7 @@
                         <img src="./assets/user.png" alt="Profile image of another satisfied customer"
                             class="block lg:max-h-[300px] w-auto p-4 rounded-full" />
                     </div>
-                    <h3 id="review-3-heading"
-                        class="text-2xl sm:text-3xl font-light text-orange-400 text-center bg-orange-200 py-2 px-4 rounded-xl">
-                        Time-Saving Solution</h3>
+                        <md-filter-chip  label="Time-Saving Solution"></md-filter-chip>
                     <p class="font-light text-[16px] sm:text-xl text-center">
                         “With Pawfect Care, we save hours every day. The 24/7 booking assistant ensures that we never
                         miss an appointment or overbook.”
@@ -321,48 +350,42 @@
                     </div>
 
 
-                    <div class="flex flex-col gap-4">
-                        <label class="text-xl font-light" htmlFor="name">Full Name</label>
-                        <input class="border-none p-2 rounded-xl max-w-lg" type="text" id="name" name="name"
-                            aria-label="Enter your full name" placeholder="John Doe" required />
-                    </div>
+                    <md-filled-text-field aria-label="Enter your full name" label="Full Name" value="John Doe">
+                    </md-filled-text-field>
 
-                    <div class="flex flex-col gap-4">
-                        <label class="text-xl font-light" htmlFor="phone">Phone Number</label>
-                        <input class="border-none p-2 rounded-xl max-w-lg" type="tel" id="phone" name="phone"
-                            aria-label="Enter your phone number" placeholder="+1234567890" required />
-                    </div>
+                    <md-filled-text-field type="number" aria-label="Enter your phone number" label="Phone Number"
+                        value="+1234567890">
+                    </md-filled-text-field>
 
-                    <div class="flex flex-col gap-4">
-                        <label class="text-xl font-light" htmlFor="message">Your Message</label>
-                        <textarea class="border-none p-2 rounded-xl max-w-lg" id="message" name="message"
-                            aria-label="Enter your message" placeholder="How can we assist you?" required></textarea>
-                    </div>
+                    <md-filled-text-field aria-label="Enter your message" label="Your Message"
+                        value="How can we assist you?">
+                    </md-filled-text-field>
 
+                    <md-filled-button aria-label="Submit message">Send
+                        Message</md-filled-button>
 
-                    <button type="submit" class="bg-orange-400 text-white p-2 rounded-3xl font-light text-xl">Send
-                        Message</button>
                 </form>
             </div>
         </section>
 
 
-        <footer class="bg-white" aria-labelledby="footer-heading">
-            <div class="container mx-auto flex flex-col items-center md:flex-row justify-between py-5 px-4">
+        <footer aria-labelledby="footer-heading" class="bg-[#FEF7FF] border-t-[1px] border-gray-500">
+            <div class="container mx-auto flex flex-col items-center md:flex-row justify-between px-4">
 
 
-                <a href="/" class="flex flex-row items-center justify-center gap-2 p-4" aria-label="Inicio">
+                <a href="/" class="flex flex-row items-center justify-center gap-2" aria-label="Inicio">
                     <div class="h-28 w-28 rounded-full p-4 flex justify-center items-center">
                         <img src="./assets/perro.png" alt="Logo de Pawfect Care" />
                     </div>
-                    <span class="text-xl font-bold">Pawfect Care</span>
+                    <md-text-button class="text-xl font-bold">Pawfect Care</md-text-button>
                 </a>
 
 
                 <nav aria-label="Enlaces principales">
                     <ul class="flex flex-row justify-center gap-10 pb-8 md:pb-0">
                         <li class="flex flex-col gap-4">
-                            <a class="font-bold text-xl" href="#contact" aria-label="Ir a la sección de Soporte">Support</a>
+                            <a class="font-bold text-xl" href="#contact"
+                                aria-label="Ir a la sección de Soporte">Support</a>
                             <ul>
                                 <li><a href="tel:+578203548"
                                         aria-label="Llamar al soporte de Pawfect Care">+578203548</a></li>
@@ -374,7 +397,8 @@
                         <li class="flex flex-col gap-4">
                             <a class="font-bold text-xl" href="#" aria-label="Ir a la sección de Servicios">Services</a>
                             <ul>
-                                <li><a href="#subscriptions" aria-label="Información sobre Membresía">Membership</a></li>
+                                <li><a href="#subscriptions" aria-label="Información sobre Membresía">Membership</a>
+                                </li>
                                 <li><a href="/" aria-label="Iniciar sesión en Pawfect Care">Sign In</a></li>
                             </ul>
                         </li>
@@ -382,28 +406,32 @@
                             <a class="font-bold text-xl" href="#" aria-label="Ir a la sección de Nosotros">About Us</a>
                             <ul>
                                 <li><a href="#contact" aria-label="Contacta con Pawfect Care">Contact</a></li>
-                                <li><a href="#service" aria-label="¿Por qué elegir Pawfect Care?">Why Choose Us?</a></li>
+                                <li><a href="#service" aria-label="¿Por qué elegir Pawfect Care?">Why Choose Us?</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
                 </nav>
 
-                <div class="flex flex-col items-center gap-4" aria-labelledby="follow-us">
+                <div class="flex flex-col items-center justify-center gap-2" aria-labelledby="follow-us">
                     <h4 id="follow-us" class="font-bold text-xl">Follow Us</h4>
                     <div class="flex flex-row gap-4">
                         <a href="https://x.com/" aria-label="Follow  Pawfect Care in Twitter">
                             <div class="h-16 w-16 p-4 flex justify-center items-center">
-                                <img src="./assets/twitter.png" alt="Logo de Twitter" />
+                                <md-text-button aria-label="navigation Twitter" hasIcon="true"> <img
+                                        src="./assets/twitter.png" alt="Twitter Logo" /></md-text-button>
                             </div>
                         </a>
                         <a href="https://facebook.com/" aria-label="Follow a Pawfect Care in Facebook">
                             <div class="h-16 w-16 p-4 flex justify-center items-center">
-                                <img src="./assets/fb.png" alt="Logo de Facebook" />
+                                <md-text-button aria-label="navigation facebook" hasIcon="true"> <img
+                                        src="./assets/fb.png" alt="Facebook Logo" /></md-text-button>
                             </div>
                         </a>
                         <a href="https://www.instagram.com/#" aria-label="Follow a Pawfect Care in Instagram">
                             <div class="h-16 w-16 p-4 flex justify-center items-center">
-                                <img src="./assets/instagram.png" alt="Logo de Instagram" />
+                                <md-text-button aria-label="navigation instagram" hasIcon="true"> <img
+                                        src="./assets/instagram.png" alt="instagram logo" /></md-text-button>
                             </div>
                         </a>
                     </div>
@@ -412,5 +440,5 @@
         </footer>
     </main>
 </body>
+
 </html>
-        
